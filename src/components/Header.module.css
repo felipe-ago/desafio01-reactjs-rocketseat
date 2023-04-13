@@ -1,0 +1,22 @@
+.header{
+    background: var(--gray-700);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem 0;
+}
+
+.header img{
+    height: 2.25rem;
+    margin-right: 0.75rem;
+}
+
+.to{
+    color: var(--blue);
+    font-size: 2.5rem;
+}
+
+.do{
+    color: var(--blue-dark);
+    font-size: 2.5rem;
+}
