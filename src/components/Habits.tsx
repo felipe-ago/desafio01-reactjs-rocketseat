@@ -1,9 +1,16 @@
-import styles from './Header.module.css'
+import { useState } from "react";
+import { PlusCircle } from "phosphor-react";
+import styles from "./Habits.module.css";
 
-export function Habits(){
-    return(
-        <div>
-            <h1>Input do Habits Aqui</h1>
-        </div>
-    )
+export function Habits() {
+  const [newHabit, setNewHabit] = useState("");
+
+  return (
+    <div className={styles.habits}>
+      <textarea name="habits" placeholder="Adicione uma nova tarefa" />
+      <button>
+        Criar <span><PlusCircle size={20} /></span>
+      </button>
+    </div>
+  );
 }
