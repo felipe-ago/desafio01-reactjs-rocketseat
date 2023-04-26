@@ -1,16 +1,33 @@
-import { useState } from "react";
-import { PlusCircle } from "phosphor-react";
+import { CheckCircle, Trash } from "phosphor-react";
 import styles from "./Habits.module.css";
 
-export function Habits() {
-  const [newHabit, setNewHabit] = useState("");
+interface HabitsProps {
+  content: string;
+  onDeleteHabit: (content: string) => void;
+}
+
+export function Habits({ content, onDeleteHabit }: HabitsProps) {
+  function handleDeleteHabit() {
+    onDeleteHabit(content);
+  }
 
   return (
     <div className={styles.habits}>
-      <textarea name="habits" placeholder="Adicione uma nova tarefa" />
-      <button>
-        Criar <span><PlusCircle size={20} /></span>
+      <button className={styles.check}>
+        <CheckCircle size={24} />
+      </button>
+      <p>{content}</p>
+      <button onClick={handleDeleteHabit} className={styles.trash}>
+        <Trash size={24} />
       </button>
     </div>
   );
 }
+
+/*
+<div className={styles.content}>
+        {task.content.map((line) => {
+          return <p key={line.content}></p>;
+        })}
+      </div>
+*/

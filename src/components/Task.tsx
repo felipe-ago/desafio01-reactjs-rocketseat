@@ -1,10 +1,14 @@
 import { ChangeEvent, FormEvent, InvalidEvent, useState } from "react";
 import styles from "./Task.module.css";
 import { CheckCircle, Trash } from "phosphor-react";
+import { Habits } from "./Habits";
 
+interface Habits {
+  content: string;
+}
 export interface TaskType {
   id: number;
-  content: string;
+  content: Habits[];
 }
 
 interface TaskProps {
@@ -12,7 +16,7 @@ interface TaskProps {
 }
 
 export function Task({ task }: TaskProps) {
-  const [habit, sethabit] = useState(["Criei um Habit!"]);
+  const [habits, sethabit] = useState(["Criei um Habit!"]);
 
   const [newHabit, setNewHabit] = useState("");
 
@@ -23,7 +27,7 @@ export function Task({ task }: TaskProps) {
   function handleCreateHabit(event: FormEvent) {
     event.preventDefault();
 
-    sethabit([...habit, newHabit]);
+    sethabit([...habits, newHabit]);
 
     setNewHabit("");
   }
@@ -38,7 +42,7 @@ export function Task({ task }: TaskProps) {
   }
 
   function deleteHabit(habitToDelete: string) {
-    const habitWithoutDeleteOne = habit.filter((habit) => {
+    const habitWithoutDeleteOne = habits.filter((habit) => {
       return habit != habitToDelete;
     });
     sethabit(habitWithoutDeleteOne);
@@ -46,23 +50,13 @@ export function Task({ task }: TaskProps) {
 
   return (
     <article className={styles.taskBox}>
-      <header>
-        <div className={styles.taskCreate}>
-          Tarefas criadas <span>{taskCreate}</span>
-        </div>
-        <div className={styles.taskCompleted}>
-          Concluidas <span>{taskCompleted}</span>
-        </div>
-      </header>
-      <body>
-        <button className={styles.check}>
-          <CheckCircle size={24} />
-        </button>
-        <p>Os Habits vão aparecer aqui!!!</p>
-        <button className={styles.trash}>
-          <Trash size={24} />
-        </button>
-      </body>
+      <div className={styles.taskList}>
+        {habits.map((habit) => {
+          return (
+            <Habits key={habit} content={habit} onDeleteHabit={deleteHabit} />
+          );
+        })}
+      </div>
     </article>
   );
 }

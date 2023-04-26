@@ -1,42 +1,29 @@
 .habits {
-  max-width: 52rem;
-  margin: -4rem auto;
+  max-width: 70rem;
+  min-width: 50rem;
+  margin: 0 auto;
   display: flex;
-}
-
-.habits textarea {
-  width: 70rem;
-  background: var(--gray-600);
-  border: 0;
-  resize: none;
-  height: 3.5rem;
+  background: var(--gray-400);
+  color: var(--gray-100);
   padding: 1rem;
   border-radius: 0.5rem;
-  color: var(--gray-300);
-  font-weight: bold;
-  line-height: 1.4;
+  margin-bottom: 0.75rem;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .habits button {
-  background: var(--blue-dark);
-  color: var(--gray-100);
-  width: 10rem;
-  height: 3.5rem;
-  margin-left: 1rem;
-  border-radius: 8px;
-  padding: 1rem;
-  font-weight: bold;
-  font-size: 1rem;
-  border: var(--black);
-  display: flex;
-  justify-content: center;
+  background: transparent;
+  border: 0;
+  color: var(--gray-200);
+  border-radius: 0.25rem;
 }
 
-.habits button:hover{
-  background: var(--blue);
-  border: 0.15rem solid var(--gray-300);
+.check:hover {
+    color: var(--blue);
+  }
+  
+.trash:hover {
+  color: var(--danger);
 }
 
-.habits button span{
-  margin-left: 0.3rem;
-}
